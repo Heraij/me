@@ -53,25 +53,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function updateViewCounter() {
-    // Tracks unique stats tied to your namespace and key
-    const namespace = "my-hardests-vercel-app";
-    const key = "visits";
+    // Switched to an active, reliable public tracking endpoint
+    const namespace = "my-hardests-creatorplus";
     
-    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+    fetch(`https://api.counterapi.dev/v1/${namespace}/visits/up`)
         .then(response => {
-            if (!response.ok) throw new Error('Counter API issue');
+            if (!response.ok) throw new Error('API server issue');
             return response.json();
         })
         .then(data => {
             const countElement = document.getElementById('view-count');
             if (countElement) {
-                // Formats the number nicely with commas (e.g., 1,234)
-                countElement.innerText = data.value.toLocaleString();
+                // The structure here uses data.count instead of data.value
+                countElement.innerText = data.count.toLocaleString();
             }
         })
         .catch(error => {
             console.error("Error updating view counter:", error);
-            // Fallback display if the external public server has a hiccup
-            document.getElementById('view-count').innerText = "Live";
+            document.getElementById('view-count').innerText = "Online";
         });
 }
