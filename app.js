@@ -53,23 +53,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function updateViewCounter() {
-    // Switched to an active, reliable public tracking endpoint
-    const namespace = "my-hardests-creatorplus";
+    // Updated key to match your new Vercel domain perfectly!
+    const siteKey = "me-flax-ten-vercel-app";
     
-    fetch(`https://api.counterapi.dev/v1/${namespace}/visits/up`)
+    fetch(`https://api.moe-counter.workers.dev/counter?page=${siteKey}`)
         .then(response => {
-            if (!response.ok) throw new Error('API server issue');
+            if (!response.ok) throw new Error('Network error');
             return response.json();
         })
         .then(data => {
             const countElement = document.getElementById('view-count');
-            if (countElement) {
-                // The structure here uses data.count instead of data.value
-                countElement.innerText = data.count.toLocaleString();
+            if (countElement && data.views) {
+                countElement.innerText = data.views.toLocaleString();
             }
         })
         .catch(error => {
-            console.error("Error updating view counter:", error);
-            document.getElementById('view-count').innerText = "Online";
+            console.error("Counter Error:", error);
+            document.getElementById('view-count').innerText = "000404";
         });
 }
