@@ -3,6 +3,6 @@
   "goals": [
     { "text": "Beat a Hard demon", "completed": true },
     { "text": "Verify Krugov Circles", "completed": false },
-    { "text": "Get a level rated", "completed": true }
+    { "text": "Get a level rated", "completed": false }
   ]
 }
