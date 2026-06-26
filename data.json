@@ -1,0 +1,8 @@
+{
+  "featuredVideoId": "dQw4w9WgXcQ", 
+  "goals": [
+    { "text": "Beat a Hard demon", "completed": true },
+    { "text": "Verify Krugov Circles", "completed": false },
+    { "text": "Get a level rated", "completed": true }
+  ]
+}
