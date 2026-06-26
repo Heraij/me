@@ -165,4 +165,30 @@ header {
     border: 2px solid #e57373; /* Light red/coral border */
     color: #e57373; /* Light red cross */
 }
+/* --- Footer & View Counter --- */
+footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.counter-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--panel-bg);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(163, 112, 247, 0.1); /* Subtle purple border tint */
+}
+
+.counter-box img {
+    display: block;
+    height: 20px; /* Aligns the badge perfectly with the text height */
+}
 
