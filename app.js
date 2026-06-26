@@ -56,19 +56,19 @@ function updateViewCounter() {
     const countElement = document.getElementById('view-count');
     if (!countElement) return;
 
-    // 1. Get the current visit count from localStorage, or default to 0 if it's their first time
+    // 1. Check if the browser already has a saved count
     let localHits = localStorage.getItem('creatorplus_views');
     
-    // If it doesn't exist yet, let's start it off at a realistic number so it doesn't look empty!
+    // 2. If it's a new visitor, start at a baseline (e.g., 142), otherwise add 1
     if (!localHits) {
-        localHits = 142; // Your starting view baseline
+        localHits = 142; 
     } else {
         localHits = parseInt(localHits) + 1;
     }
 
-    // 2. Save the updated count back to the browser storage
+    // 3. Save it back to the browser
     localStorage.setItem('creatorplus_views', localHits);
 
-    // 3. Display it beautifully in your panel with commas
+    // 4. Update the screen instantly
     countElement.innerText = localHits.toLocaleString();
 }
