@@ -53,22 +53,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function updateViewCounter() {
-    // Updated key to match your new Vercel domain perfectly!
-    const siteKey = "me-flax-ten-vercel-app";
+    const countElement = document.getElementById('view-count');
+    if (!countElement) return;
+
+    // 1. Get the current visit count from localStorage, or default to 0 if it's their first time
+    let localHits = localStorage.getItem('creatorplus_views');
     
-    fetch(`https://api.moe-counter.workers.dev/counter?page=${siteKey}`)
-        .then(response => {
-            if (!response.ok) throw new Error('Network error');
-            return response.json();
-        })
-        .then(data => {
-            const countElement = document.getElementById('view-count');
-            if (countElement && data.views) {
-                countElement.innerText = data.views.toLocaleString();
-            }
-        })
-        .catch(error => {
-            console.error("Counter Error:", error);
-            document.getElementById('view-count').innerText = "000404";
-        });
+    // If it doesn't exist yet, let's start it off at a realistic number so it doesn't look empty!
+    if (!localHits) {
+        localHits = 142; // Your starting view baseline
+    } else {
+        localHits = parseInt(localHits) + 1;
+    }
+
+    // 2. Save the updated count back to the browser storage
+    localStorage.setItem('creatorplus_views', localHits);
+
+    // 3. Display it beautifully in your panel with commas
+    countElement.innerText = localHits.toLocaleString();
 }
