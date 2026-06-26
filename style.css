@@ -131,20 +131,38 @@ header {
     font-size: 1.05rem;
 }
 
+/* --- Goals Icon System --- */
+
+/* The base circular wrapper */
 .goal-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    font-size: 0.85rem;
     font-weight: bold;
-    font-size: 1.2rem;
+    flex-shrink: 0; /* Prevents the circle from squishing on mobile */
 }
 
-/* Complete vs Pending State styles */
+/* Completed State (Light Green Circle) */
 .goal-item.completed {
     color: var(--text-muted);
     text-decoration: line-through;
-    opacity: 0.7;
+    opacity: 0.75;
 }
-.goal-item.completed .glow-header { text-shadow: none; }
-.goal-item.completed .goal-icon { color: var(--accent-green); }
 
-.goal-item.pending .goal-icon {
-    color: var(--glow-color);
+.goal-item.completed .goal-icon {
+    background-color: rgba(76, 175, 80, 0.15); /* Soft transparent green fill */
+    border: 2px solid #81c784; /* Light green border */
+    color: #81c784; /* Light green checkmark */
 }
+
+/* Pending State (Red Circle) */
+.goal-item.pending .goal-icon {
+    background-color: rgba(244, 67, 54, 0.15); /* Soft transparent red fill */
+    border: 2px solid #e57373; /* Light red/coral border */
+    color: #e57373; /* Light red cross */
+}
+
