@@ -72,3 +72,92 @@ function updateViewCounter() {
     // 4. Update the screen instantly
     countElement.innerText = localHits.toLocaleString();
 }
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            renderVideo(data.featuredVideoId);
+            renderGoals(data.goals);
+            renderDemons(data.demons);
+            drawPieChart(data.skillsets);
+        })
+        .catch(error => console.error("Error:", error));
+    
+    updateViewCounter();
+});
+
+// Render the Top 5 grid elements
+function renderDemons(demonsArray) {
+    const container = document.getElementById('demons-container');
+    container.innerHTML = "";
+
+    demonsArray.slice(0, 5).forEach((demon, index) => {
+        const card = document.createElement('div');
+        card.className = 'demon-card';
+        card.innerHTML = `<h3>#${index + 1} ${demon.name}</h3><p>${demon.difficulty}</p>`;
+        
+        // Open the detailed subpage on click
+        card.addEventListener('click', () => openSubpage(demon));
+        container.appendChild(card);
+    });
+}
+
+// Generate the subpage data overlay dynamically
+function openSubpage(demon) {
+    const modal = document.getElementById('subpage-modal');
+    const dataBox = document.getElementById('subpage-data');
+    
+    dataBox.innerHTML = `
+        <h1 class="glow-header">${demon.name}</h1>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/${demon.videoId}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="stats-bar">
+            <div><strong>ID:</strong> ${demon.id}</div>
+            <div><strong>Enjoyment:</strong> ${demon.enjoyment}</div>
+            <div><strong>Skillset:</strong> ${demon.skillset}</div>
+            <div><strong>Difficulty:</strong> ${demon.difficulty}</div>
+        </div>
+        <div class="thoughts-box">
+            <h4>Thoughts:</h4>
+            <p>${demon.thoughts}</p>
+        </div>
+    `;
+    modal.style.display = "flex";
+}
+
+function closeSubpage() {
+    document.getElementById('subpage-modal').style.display = "none";
+}
+
+// Draw a pure CSS/Canvas pie chart matching the site colors
+function drawPieChart(skillsetData) {
+    const canvas = document.getElementById('skillsetChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    // Set internal resolution sizes
+    canvas.width = 300;
+    canvas.height = 300;
+    
+    const colors = ['#a370f7', '#4caf50', '#e57373', '#2196f3'];
+    const total = Object.values(skillsetData).reduce((a, b) => a + b, 0);
+    
+    let startAngle = 0;
+    let colorIdx = 0;
+
+    Object.entries(skillsetData).forEach(([skill, val]) => {
+        const sliceAngle = (val / total) * 2 * Math.PI;
+        
+        // Draw slice
+        ctx.beginPath();
+        ctx.fillStyle = colors[colorIdx % colors.length];
+        ctx.moveTo(150, 150);
+        ctx.arc(150, 150, 120, startAngle, startAngle + sliceAngle);
+        ctx.closePath();
+        ctx.fill();
+        
+        startAngle += sliceAngle;
+        colorIdx++;
+    });
+}
