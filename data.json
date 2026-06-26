@@ -1,8 +1,33 @@
 {
-  "featuredVideoId": "aTObXPHFEPw", 
+  "featuredVideoId": "dQw4w9WgXcQ",
   "goals": [
-    { "text": "Beat a Hard demon", "completed": true },
-    { "text": "Verify Krugov Circles", "completed": false },
-    { "text": "Get a level rated", "completed": false }
-  ]
+    { "text": "Beat a Hard Demon", "completed": true },
+    { "text": "Get creator points", "completed": false }
+  ],
+  "demons": [
+    {
+      "name": "Nine Circles",
+      "videoId": "dQw4w9WgXcQ",
+      "id": "4284013",
+      "enjoyment": "7/10",
+      "skillset": "Wave / Visibility",
+      "difficulty": "Hard Demon",
+      "thoughts": "It just kept getting worse, first 86% then 87%... TWICE"
+    },
+    {
+      "name": "Sakupen Egg",
+      "videoId": "dQw4w9WgXcQ",
+      "id": "58002670",
+      "enjoyment": "9/10",
+      "skillset": "Overall",
+      "difficulty": "Medium Demon",
+      "thoughts": "Was kind of easy, beat under an hour"
+    }
+  ],
+  "skillsets": {
+    "Wave": 40,
+    "Ship": 25,
+    "Timing": 20,
+    "Memory": 15
+  }
 }
