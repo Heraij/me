@@ -45,3 +45,33 @@ function renderGoals(goalsArray) {
         list.appendChild(li);
     });
 }
+document.addEventListener("DOMContentLoaded", () => {
+    // Keep your existing fetch('data.json') logic here...
+    
+    // Call the counter function
+    updateViewCounter();
+});
+
+function updateViewCounter() {
+    // Tracks unique stats tied to your namespace and key
+    const namespace = "my-hardests-vercel-app";
+    const key = "visits";
+    
+    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+        .then(response => {
+            if (!response.ok) throw new Error('Counter API issue');
+            return response.json();
+        })
+        .then(data => {
+            const countElement = document.getElementById('view-count');
+            if (countElement) {
+                // Formats the number nicely with commas (e.g., 1,234)
+                countElement.innerText = data.value.toLocaleString();
+            }
+        })
+        .catch(error => {
+            console.error("Error updating view counter:", error);
+            // Fallback display if the external public server has a hiccup
+            document.getElementById('view-count').innerText = "Live";
+        });
+}
