@@ -1,3 +1,92 @@
+/* Divider Line */
+.section-divider {
+    border: none;
+    border-top: 2px dashed var(--panel-bg);
+    margin: 40px 0;
+}
+
+/* Demons Cards Grid Layout */
+.demons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.demon-card {
+    background: var(--panel-bg);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.demon-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(163, 112, 247, 0.3);
+}
+
+/* Pie Chart Layout */
+.chart-section {
+    background: var(--panel-bg);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.chart-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Modal Window Layout acting as Subpage Overlays */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11, 12, 16, 0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: #161b22;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(163, 112, 247, 0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none; border: none;
+    color: #fff; font-size: 2rem; cursor: pointer;
+}
+
+/* Internal stats listing block */
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 6px;
+    margin: 20px 0;
+}
+
+.thoughts-box {
+    background: rgba(255,255,255,0.02);
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 4px solid var(--glow-color);
+}
 /* Dark Mode Setup */
 :root {
     --bg-color: #0b0c10;
