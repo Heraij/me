@@ -26,17 +26,41 @@
         <!-- Video Embed Section -->
         <main class="video-section">
             <div class="video-wrapper" id="video-container">
-                <p class="loading">Loading featured showcase...</p>
+                <p class="loading">Loading featured...</p>
             </div>
         </main>
 
         <!-- Goals Panel -->
         <section class="goals-panel">
-            <h2>Current Goals</h2>
+            <h2>Goals:</h2>
             <ul id="goals-list" class="goals-list">
                 <li class="loading">Loading goals...</li>
             </ul>
         </section>
+
+        <hr class="section-divider">
+
+        <section class="demons-section">
+            <h2>Demons</h2>
+            <div id="demons-container" class="demons-grid">
+                <p class="loading">Loading top demons...</p>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <h3>Top skills</h3>
+            <div class="chart-wrapper">
+                <canvas id="skillsetChart"></canvas>
+            </div>
+        </section>
+
+        <div id="subpage-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeSubpage()">&times;</button>
+                <div id="subpage-data">
+                    </div>
+            </div>
+        </div>
 
         <!-- Footer with Working View Counter -->
         <footer>
